@@ -1,2 +1,3 @@
 # frontend-python
-The thing you shall never use
+
+Testing Transcrypt lib with React example code integrating it with CD to Github pages.
