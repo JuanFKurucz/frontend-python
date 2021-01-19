@@ -1,0 +1,26 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  checkout-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: pip install -r requirements
+        shell: bash
+      - run: sh scripts/compile.sh
+        shell: bash
+      - name: Deploy
+        if: success()
+        uses: Cecilapp/GitHub-Pages-deploy@3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          EMAIL: juanfkurucz@gmail.com
+          BUILD_DIR: public/
