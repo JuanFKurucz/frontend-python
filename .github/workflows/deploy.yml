@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - run: sudo apt-get install python3-setuptools
+        shell: bash
       - run: pip3 install -r requirements
         shell: bash
       - run: sh scripts/compile.sh
